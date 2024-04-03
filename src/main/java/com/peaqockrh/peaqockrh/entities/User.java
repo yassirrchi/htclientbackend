@@ -17,7 +17,7 @@ public class User {
     private String email;
     private String role;
     private String password;
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
     private RefreshToken refreshToken;
 
 }

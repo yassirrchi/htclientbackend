@@ -38,10 +38,8 @@ public class AuthenticationController {
         if(refreshToken==null)
             throw new RuntimeException("Refresh is not found");
         System.out.println(refreshToken.getToken());
-
         refreshTokenService.verifyExpiration(refreshToken);
         //
-
       /* refreshTokenService.findByToken(refreshRequest.refresh())
                .map(refreshTokenService::verifyExpiration)
                .map(RefreshToken::getUser)
