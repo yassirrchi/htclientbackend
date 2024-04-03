@@ -1,9 +1,7 @@
 package com.peaqockrh.peaqockrh.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.peaqockrh.peaqockrh.security.entities.RefreshToken;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,5 +17,7 @@ public class User {
     private String email;
     private String role;
     private String password;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private RefreshToken refreshToken;
 
 }

@@ -15,7 +15,6 @@ public class PeaqockRhApplication {
 		SpringApplication.run(PeaqockRhApplication.class, args);
 	}
 	@Bean
-
 	CommandLineRunner init(UserRepository userRepository, PasswordEncoder passwordEncoder){
 		return args -> {
 			User user=new User();
