@@ -18,7 +18,6 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "*", maxAge = 3600)
 public class AuthenticationController {
     private final UserService userService;
     private final UserAuthProvider userAuthProvider;
@@ -37,8 +36,10 @@ public class AuthenticationController {
 
         System.out.println(refreshRequest.refresh());
         RefreshToken refreshToken=refreshTokenService.findByToken(refreshRequest.refresh()).orElse(null);
-        if(refreshToken==null)
+        if(refreshToken==null){
             throw new RuntimeException("Refresh is not found");
+        }
+
         System.out.println(refreshToken.getToken());
         User user=refreshTokenService.verifyExpiration(refreshToken).getUser();
         UserDTO userdto=userMapper.toUserDTO(user);
@@ -58,7 +59,6 @@ public class AuthenticationController {
                    return ResponseEntity.ok(userDTO);
                }).orElseThrow(()->
                    new RuntimeException("REFRESH NOT FOUND"));*/
-
 
 
     }
